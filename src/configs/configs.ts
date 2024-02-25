@@ -48,6 +48,11 @@ export const configs: AppConfigurations = {
         host: process.env.HOST || '0.0.0.0',
         port: process.env.PORT || '',
     },
+
+    keys: {
+        private_key: process.env.PRIVATE_KEY || '',
+        public_key: process.env.PUBLIC_KEY || '',
+    },
 };
 
 export function configLogger(configs: AppConfigurations): void {
