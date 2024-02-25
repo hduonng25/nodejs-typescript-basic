@@ -146,7 +146,7 @@ const logResponse = (
     status_code: HttpsStatus,
     body: any,
     correlation_id?: string,
-    responseData?: any
+    response_data?: any
 ): void => {
     const response_time = new Date();
     const data = {
@@ -154,8 +154,8 @@ const logResponse = (
         correlation_id,
         response_time,
         status_code,
+        response_data,
         body,
-        responseData
     };
 
     logger.info(JSON.stringify(data), {

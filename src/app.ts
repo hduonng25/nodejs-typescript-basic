@@ -1,11 +1,12 @@
 import express, { Application, Router } from 'express';
-import { AppConfigurations, configLogger } from './configs';
+import { configLogger } from './configs';
 import {
     parserMiddlewares,
     requestInitialization,
     resultMiddlewares,
 } from './middleware';
 import { notFoundMiddlewares } from './middleware/result';
+import { AppConfigurations } from './interface/config';
 
 const createApp = (
     applicationRouter: Router,
