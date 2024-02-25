@@ -97,7 +97,6 @@ function handleResult(
         }
     }
     const maskedResponseData = { ...responseData };
-
     //An cac truong thong tin nhay cam bang mark
     mask(maskedResponseData, ['password', 'accessToken', 'refreshToken']);
     const correlationId = request.correlation_id;
@@ -110,7 +109,9 @@ function handleResult(
         statusCode,
         maskedResponseData,
         correlationId,
+        responseData
     );
+
     // Gán giá trị của data cho responseData (nếu responseData không được gán từ phía trên)
     responseData = responseData === undefined ? data : responseData;
     // Trả về kết quả cho client
@@ -145,6 +146,7 @@ const logResponse = (
     status_code: HttpsStatus,
     body: any,
     correlation_id?: string,
+    responseData?: any
 ): void => {
     const response_time = new Date();
     const data = {
@@ -153,6 +155,7 @@ const logResponse = (
         response_time,
         status_code,
         body,
+        responseData
     };
 
     logger.info(JSON.stringify(data), {

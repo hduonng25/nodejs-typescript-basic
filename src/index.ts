@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import { configs } from './configs/configs';
+import { configLogger, configs } from './configs/configs';
 import { router } from './routers';
 import logger from './logger';
 import 'express-async-errors';
@@ -11,6 +11,7 @@ function main(): void {
     const env = configs.environment;
     const port = Number(configs.app.port);
     const host = configs.app.host;
+    configLogger(configs)
     const app: Application = express();
     app.use(parserMiddlewares);
     app.use(requestInitialization);

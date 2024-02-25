@@ -15,6 +15,15 @@ export interface AppConfigurations {
         getUri: () => string;
     };
 
+    log?: {
+        logFileEnabled: string;
+        folderLogsPath: string;
+        logstashEnabled: string;
+        logstashHost: string;
+        logstashPort: string;
+        logstashProtocol: string;
+    };
+
     app: {
         prefix: string;
         host: string;
@@ -25,6 +34,13 @@ export interface AppConfigurations {
         private_key: string;
         public_key: string;
     };
+}
+
+export function configLogger(configs: AppConfigurations): void {
+    logger.config({
+        service: configs.service,
+        ...configs.log,
+    });
 }
 
 export const configs: AppConfigurations = {
@@ -51,6 +67,21 @@ export const configs: AppConfigurations = {
             uri = `${uri}`;
             return uri;
         },
+    },
+
+    log: {
+        logFileEnabled: process.env.LAB_LOG_FILE_ENABLED || 'true',
+        folderLogsPath:
+            process.env.LAB_FOLDER_LOGS_PATH ||
+            `${__dirname}../../../logs`,
+
+        logstashEnabled:
+            process.env.LAB_LOG_LOGSTASH_ENABLED || 'false',
+        logstashHost:
+            process.env.LAB_LOG_LOGSTASH_HOST || '127.0.0.1',
+        logstashPort: process.env.LAB_LOG_LOGSTASH_PORT || '50001',
+        logstashProtocol:
+            process.env.LAB_LOG_LOGSTASH_PROTOCOL || 'udp',
     },
 
     app: {

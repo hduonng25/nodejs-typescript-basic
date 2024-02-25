@@ -34,7 +34,7 @@ function getTransports(config?: LoggerConfigurations): Transport[] {
     const transports: Transport[] = [
         new winston.transports.Console(options.console),
     ];
-    
+
     //Kiểm tra nếu cấu hình cho việc ghi log vào file (fileEnabled) được bật, thì thêm một transport winston.transports.DailyRotateFile vào mảng transport.
     if (fileEnabled) {
         const transport = new winston.transports.DailyRotateFile(
@@ -92,7 +92,7 @@ function getOptions(config?: LoggerConfigurations): LoggerOptions {
                             .map((t) => `[${t}]`)
                             .join('');
                     }
-                    return `${info.timestamp} [${info.level}][service:${configs.service}]${tags}: ${info.message}`;
+                    return `${info.timestamp} [${info.level}][service:${configs?.service}]${tags}: ${info.message}`;
                 },
             ),
         ),
@@ -116,7 +116,6 @@ function setConfiguration(
     this: winston.Logger,
     config: LoggerConfigurations,
 ): void {
-
     //Gọi hàm getOptions để lấy các tùy chọn cấu hình mới dựa trên cấu hình được truyền vào.
     const options = getOptions(config);
 
