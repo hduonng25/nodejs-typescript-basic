@@ -1,4 +1,4 @@
-import { ResultError } from "~/interface/result";
+import { ResultError } from '~/interface/result';
 
 export interface ErrorData {
     errorCode: string;

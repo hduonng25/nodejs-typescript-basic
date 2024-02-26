@@ -1,4 +1,4 @@
-import { HttpsStatus } from "~/contant";
+import { HttpsStatus } from '~/contant';
 
 export interface ResultSuccess {
     status: HttpsStatus;

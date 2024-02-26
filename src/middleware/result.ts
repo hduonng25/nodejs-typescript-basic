@@ -98,7 +98,11 @@ function handleResult(
     }
     const maskedResponseData = { ...responseData };
     //An cac truong thong tin nhay cam bang mark
-    mask(maskedResponseData, ['password', 'accessToken', 'refreshToken']);
+    mask(maskedResponseData, [
+        'password',
+        'accessToken',
+        'refreshToken',
+    ]);
     const correlationId = request.correlation_id;
     const request_id = request.request_id;
     const requestBody = JSON.parse(JSON.stringify(request.body));
@@ -109,7 +113,7 @@ function handleResult(
         statusCode,
         maskedResponseData,
         correlationId,
-        responseData
+        responseData,
     );
 
     // Gán giá trị của data cho responseData (nếu responseData không được gán từ phía trên)
@@ -146,7 +150,7 @@ const logResponse = (
     status_code: HttpsStatus,
     body: any,
     correlation_id?: string,
-    response_data?: any
+    response_data?: any,
 ): void => {
     const response_time = new Date();
     const data = {
