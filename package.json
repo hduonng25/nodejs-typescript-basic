@@ -5,7 +5,7 @@
     "main": "index.js",
     "requires": true,
     "scripts": {
-        "start": "node /bui",
+        "start": "node build/index.js",
         "dev": "npx nodemon",
         "build": "npx tsc --incremental",
         "clean": "rm -rf build tsconfig.tsbuildinfo",
