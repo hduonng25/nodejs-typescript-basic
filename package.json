@@ -5,9 +5,9 @@
     "main": "index.js",
     "requires": true,
     "scripts": {
-        "start": "node build/index.js",
+        "start": "node dist/index.js",
         "dev": "npx nodemon",
-        "build": "npx tsc --incremental",
+        "build": "rimraf ./dist && tsc && tsc-alias",
         "clean": "rm -rf build tsconfig.tsbuildinfo",
         "lint": "npx eslint src/** --fix --cache",
         "format": "npx prettier --write \"!**/build\" \"**/*.{ts,tsx,md,js,json}\"",
