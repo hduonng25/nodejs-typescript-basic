@@ -12,7 +12,8 @@ function main(): void {
     setKeyVerify(configs.keys.public_key);
     const startApp = (): void => {
         app.listen(Number(port), host, () => {
-            logger.info('Listening on: %s:%d', host, port);
+            // logger.info('Listening on: %s:%d', host, port);
+            console.log('Listening on: %s:%d', host, port);
         });
     };
 
