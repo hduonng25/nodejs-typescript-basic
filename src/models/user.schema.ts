@@ -2,31 +2,31 @@ import mongoose from 'mongoose';
 import { IUser } from '~/interface/models';
 
 const User = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true,
-    },
+     id: {
+          type: String,
+          required: true,
+     },
 
-    name: {
-        type: String,
-        required: false,
-    },
+     name: {
+          type: String,
+          required: false,
+     },
 
-    age: {
-        type: Number,
-        required: false,
-    },
+     age: {
+          type: Number,
+          required: false,
+     },
 
-    adress: {
-        type: String,
-        required: String,
-    },
+     adress: {
+          type: String,
+          required: String,
+     },
 
-    is_deleted: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },
+     is_deleted: {
+          type: Boolean,
+          required: false,
+          default: false,
+     },
 });
 
 const Users = mongoose.model<IUser>('Users', User);

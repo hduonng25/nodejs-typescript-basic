@@ -1,11 +1,11 @@
 export interface IUser {
-    id: string;
+     id: string;
 
-    name: string;
+     name: string;
 
-    age: number;
+     age: number;
 
-    adress: string;
+     adress: string;
 
-    is_deleted?: boolean;
+     is_deleted?: boolean;
 }

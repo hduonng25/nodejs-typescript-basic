@@ -1,16 +1,16 @@
 import { ResultError } from '~/interface/result';
 
 export interface ErrorData {
-    errorCode: string;
-    description: {
-        en: string;
-        vi: string;
-    };
+     errorCode: string;
+     description: {
+          en: string;
+          vi: string;
+     };
 }
 
 export class HttpError extends Error {
-    constructor(public error: ResultError) {
-        super();
-        this.error = error;
-    }
+     constructor(public error: ResultError) {
+          super();
+          this.error = error;
+     }
 }

@@ -1,9 +1,10 @@
 import { configs } from './configs/configs';
 import { router } from './routers';
-import logger from './logger';
 import createApp from './app';
 import { setKeyVerify } from './middleware';
-import { connectToMongo } from './database';
+import { LoggerProcess } from './logger/logger.process';
+import logger from './logger';
+// import { connectToMongo } from './database';
 
 function main(): void {
     const app = createApp(router, configs);
@@ -12,14 +13,13 @@ function main(): void {
     setKeyVerify(configs.keys.public_key);
     const startApp = (): void => {
         app.listen(Number(port), host, () => {
-            // logger.info('Listening on: %s:%d', host, port);
-            console.log('Listening on: %s:%d', host, port);
+            logger.info(`Listening on: ${host}:${port}`);
         });
     };
 
-    connectToMongo(() => {
-        startApp();
-    });
+    // connectToMongo(() => {
+    startApp();
+    // });
 }
 
 main();
